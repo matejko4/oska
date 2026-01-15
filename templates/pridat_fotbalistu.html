@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Přidat fotbalistu{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Přidat nového fotbalistu</h2>
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="jmeno" class="form-label">Jméno *</label>
+                            <input type="text" class="form-control" id="jmeno" name="jmeno" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="prijmeni" class="form-label">Příjmení *</label>
+                            <input type="text" class="form-control" id="prijmeni" name="prijmeni" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="vek" class="form-label">Věk</label>
+                            <input type="number" class="form-control" id="vek" name="vek" min="1" max="99">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cislo_dresu" class="form-label">Číslo dresu</label>
+                            <input type="number" class="form-control" id="cislo_dresu" name="cislo_dresu" min="1" max="99">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="pozice" class="form-label">Pozice</label>
+                        <select class="form-select" id="pozice" name="pozice">
+                            <option value="">Vyberte pozici...</option>
+                            <option value="Brankář">Brankář</option>
+                            <option value="Obránce">Obránce</option>
+                            <option value="Záložník">Záložník</option>
+                            <option value="Útočník">Útočník</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="klub" class="form-label">Klub</label>
+                        <input type="text" class="form-control" id="klub" name="klub">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="narodnost" class="form-label">Národnost</label>
+                        <input type="text" class="form-control" id="narodnost" name="narodnost">
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">✅ Přidat fotbalistu</button>
+                        <a href="{{ url_for('prehled') }}" class="btn btn-secondary">Zpět na přehled</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

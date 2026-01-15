@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Registrace{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Registrace</h2>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="uzivatelske_jmeno" class="form-label">Uživatelské jméno</label>
+                        <input type="text" class="form-control" id="uzivatelske_jmeno" name="uzivatelske_jmeno" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="heslo" class="form-label">Heslo</label>
+                        <input type="password" class="form-control" id="heslo" name="heslo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="heslo_potvrzeni" class="form-label">Potvrzení hesla</label>
+                        <input type="password" class="form-control" id="heslo_potvrzeni" name="heslo_potvrzeni" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Zaregistrovat se</button>
+                </form>
+                <hr>
+                <p class="text-center mb-0">
+                    Už máte účet? <a href="{{ url_for('prihlaseni') }}">Přihlaste se</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

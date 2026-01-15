@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Přehled fotbalistů{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-white">Moji fotbalisté</h1>
+            <a href="{{ url_for('pridat_fotbalistu') }}" class="btn btn-success">
+                ➕ Přidat fotbalistu
+            </a>
+        </div>
+
+        {% if fotbalisti %}
+            <div class="row">
+                {% for fotbalista in fotbalisti %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card fotbalista-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ fotbalista.jmeno }} {{ fotbalista.prijmeni }}</h5>
+                            <hr>
+                            <p class="card-text">
+                                <strong>Věk:</strong> {{ fotbalista.vek if fotbalista.vek else 'N/A' }}<br>
+                                <strong>Pozice:</strong> {{ fotbalista.pozice if fotbalista.pozice else 'N/A' }}<br>
+                                <strong>Klub:</strong> {{ fotbalista.klub if fotbalista.klub else 'N/A' }}<br>
+                                <strong>Číslo dresu:</strong> {{ fotbalista.cislo_dresu if fotbalista.cislo_dresu else 'N/A' }}<br>
+                                <strong>Národnost:</strong> {{ fotbalista.narodnost if fotbalista.narodnost else 'N/A' }}
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="{{ url_for('smazat_fotbalistu', id=fotbalista.id) }}" 
+                               class="btn btn-danger btn-sm w-100"
+                               onclick="return confirm('Opravdu chcete smazat tohoto fotbalistu?')">
+                                🗑️ Smazat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                <h4>Zatím nemáte žádné fotbalisty</h4>
+                <p>Přidejte svého prvního fotbalistu kliknutím na tlačítko výše.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
